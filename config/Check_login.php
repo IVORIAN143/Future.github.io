@@ -20,7 +20,7 @@
                 $_SESSION['auth'] = $hasUser;
                 $result = ['status' => true, 'message' => 'Login Successfully!'];
             } else {
-                $result = ['status' => false, 'message' => 'Login Unsuccessful'];
+                $result = ['status' => false, 'message' => 'Login Unsuccessful check your password thank you'];
             }
         } else {
             $result = ['status' => false, 'message' => 'Invalid username!'];

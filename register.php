@@ -11,11 +11,14 @@
 				<div class="col-sm-0 mb-3 mb-sm-2">
 					<input type="text" name="lastName" class="form-control form-control-user" placeholder="Last Name">
 				</div>
-				<div class="col-sm-0 mb-3 mb-sm-0">
+				<div class="col-sm-0 mb-3 mb-sm-2">
 					<select name="role" class="form-control form-control-user">
 						<option value="nurse">Nurse</option>
 						<option value="doctor">Doctor</option>
 					</select>
+				</div>
+				<div class="col-sm-0 mb-3 mb-sm-2">
+					<input type="email" name="email" class="form-control form-control-user" placeholder="email">
 				</div>
 			</div>
 			<div class="form-group row">

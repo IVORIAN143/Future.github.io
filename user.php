@@ -104,41 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div><!--//table-utilities-->
                     </div><!--//col-auto-->
                 </div><!--//row-->
-                <table class="table app-table-hover mb-0 text-left" id="student-table">
-                    <!-- Table header -->
-                    <thead>
-                        <th>Role</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                        <th>Operation</th>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be generated here -->
-                        <?php
-                        include('config/db_config.php');
-
-                        // Fetch student data with course "BSIT"
-                        $query = $con->prepare("SELECT * FROM tbl_user");
-                        $query->execute();
-                        $data = $query->fetchAll(PDO::FETCH_ASSOC);
-
-                        foreach ($data as $row) :
-                        ?>
-                            <tr>
-                                <td class="cell"><?php echo $row['role']; ?></td>
-                                <td class="cell"><?php echo $row['firstname']; ?></td>
-                                <td class="cell"><?php echo $row['middlename']; ?></td>
-                                <td class="cell"><?php echo $row['lastname']; ?></td>
-                                <td class="cell"><?php echo $row['username']; ?></td>
-                                <td class="cell">
-                                    <a class="btn btn-info view-btn" data-toggle="modal" data-target="#viewModal" data-student-id="<?php echo $row['id_user']; ?>">View</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+              <?php
+              include 'search_area/search_for_user.php';
+              ?>
             </div><!--//container-fluid-->
         </div><!--//app-content-->
     </div><!--//app-wrapper-->
@@ -173,27 +141,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-	$('#RegisterForm').on('submit', function(e) {
-		e.preventDefault();
-		let formData = $(this).serialize();
-		console.log(formData);
-		$.ajax({
-			type: "POST",
-			url: "config/register.php",
-			data: formData,
-			dataType: 'json',
-			success: function(response) {
-				console.log(response);
-				if (response.status === true) {
-					alert(response.message);
-					window.location.href = 'login.php'; // Corrected redirection
-				} else {
-					alert(response.message);
-				}
-			}
-		});
-	});
-</script>
