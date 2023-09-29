@@ -4,12 +4,13 @@ require('db_config.php');
 $firstName = $_POST['firstName'];
 $middleName = $_POST['middleName'];
 $lastName = $_POST['lastName'];
+$role=$_POST['role'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 $message_result = "";
 $result = [];
 
-if (empty($firstName) || empty($middleName) || empty($lastName) || empty($username) || empty($password)) {
+if (empty($firstName) || empty($middleName) || empty($lastName) || empty($role) || empty($username) || empty($password)) {
     $result = ['status' => false, 'message' => 'All fields are required!'];
 } else {
     try {
@@ -26,10 +27,11 @@ if (empty($firstName) || empty($middleName) || empty($lastName) || empty($userna
                 ':firstname' => $firstName,
                 ':middlename' => $middleName,
                 ':lastname' => $lastName,
+                ':role' => $role,
                 ':username' => $username,
                 ':password' => $hashed_pwd
             ];
-            $user_query = $con->prepare("INSERT INTO tbl_user (firstname, middlename, lastname, username, password) VALUES (:firstname, :middlename, :lastname, :username, :password)");
+            $user_query = $con->prepare("INSERT INTO tbl_user (firstname, middlename, lastname, role , username, password) VALUES (:firstname, :middlename, :lastname, :role , :username, :password)");
             $execute = $user_query->execute($data);
 
             if ($execute) {

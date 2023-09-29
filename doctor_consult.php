@@ -1,4 +1,4 @@
-consult.php<?php
+<?php
 session_start();
 if (!isset($_SESSION['auth'])) {
     header('location: login.php');
@@ -11,7 +11,7 @@ include 'template/header.php';
     <header class="app-header fixed-top">
         <?php
         include 'partials/header.php';
-        include 'partials/sidebar.php';
+        include 'partials\doctor_sidebar.php';
         ?>
     </header><!--//app-header-->
 
