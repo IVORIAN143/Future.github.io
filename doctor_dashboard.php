@@ -23,7 +23,7 @@ include 'template/header.php';
                 <h1 class="app-page-title">Consult</h1>
 
                 <?php
-
+                include 'card-monitoring/card-dashboard_doctor.php';
                 ?>
 
             </div><!--//container-fluid-->

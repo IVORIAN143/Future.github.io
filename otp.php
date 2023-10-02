@@ -19,21 +19,16 @@ include 'template/header.php';
 			<div class="d-flex flex-column align-content-end">
 				<div class="app-auth-body mx-auto">
 					<div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="img/isu-logo.ico" alt="logo"></a></div>
-					<h2 class="auth-heading text-center mb-5">Log in to eHealth Mate</h2>
+					<h2 class="auth-heading text-center mb-5">OTP VERIFICATION</h2>
 					<div class="auth-form-container text-start">
 						<form class="user" id="loginForm">
 							<div class="form-group">
-								<input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username">
-								<input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-							</div>
-							<div class="form-group">
-								<div class="custom-control custom-checkbox small">
-									<input type="checkbox" class="custom-control-input" id="customCheck">
-									<label class="custom-control-label" for="customCheck">Remember Me</label>
-								</div>
+								<input hidden type="text" value=<?php echo $_REQUEST['id'] ?> name="id" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="otp" placeholder="OTP">
+
+								<input type="number" name="otp" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="otp" placeholder="OTP">
 							</div>
 							<center>
-								<button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+								<button type="submit" class="btn btn-primary btn-user btn-block">Verify</button>
 							</center>
 							<hr>
 						</form>
@@ -68,25 +63,20 @@ include 'template/header.php';
 			let formData = $(this).serialize();
 			$.ajax({
 				type: 'POST',
-				url: 'config/Check_Login.php', // Replace with the correct path to your Check_Login.php file
+				url: 'config/check_otp.php', // Replace with the correct path to your Check_Login.php file
 				data: formData,
 				dataType: 'json',
 				success: function(response) {
 					console.log(response);
 					if (response.status === true) {
-						location.href = "otp.php?id=" + response.message; // Corrected line
+						location.reload();
 					} else {
 						alert(response.message);
 					}
-				},
-				error: function(xhr, status, error) {
-					console.error(xhr.responseText);
-					alert("An error occurred during the AJAX request.");
 				}
 			});
 		});
 	</script>
-	rrrr
 </body>
 
 </html>
