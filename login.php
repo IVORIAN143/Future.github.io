@@ -8,7 +8,7 @@ if (isset($_SESSION['auth'])) {
 <html lang="en">
 
 <?php
-include 'template/header.php';
+include 'template/header.php'; // Include your header file here
 ?>
 
 <!-- Login -->
@@ -37,15 +37,14 @@ include 'template/header.php';
 							</center>
 							<hr>
 						</form>
-						<!-- <div class="auth-option text-center pt-5">No Account? Sign up <a class="text-link" href="register.php">here</a>.</div> -->
 					</div><!--//auth-form-container-->
 
 				</div><!--//auth-body-->
 			</div><!--//flex-column-->
 
 			<?php
-			include 'template/scripts.php';
-			include 'partials/footer.php'
+			include 'template/scripts.php'; // Include your scripts file here
+			include 'partials/footer.php'; // Include your footer file here
 			?>
 		</div><!--//auth-main-col-->
 		<div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
@@ -55,10 +54,6 @@ include 'template/header.php';
 			<div class="auth-background-overlay p-3 p-lg-5">
 				<div class="d-flex flex-column align-content-end h-100">
 					<div class="h-100"></div>
-					<!-- <div class="overlay-content p-3 p-lg-4 rounded">
-					    <h5 class="mb-3 overlay-title">Explore Portal Admin Template</h5>
-					    <div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the template license <a href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.</div>
-				    </div> -->
 				</div>
 			</div><!--//auth-background-overlay-->
 		</div><!--//auth-background-col-->
@@ -73,7 +68,7 @@ include 'template/header.php';
 			let formData = $(this).serialize();
 			$.ajax({
 				type: 'POST',
-				url: 'config/Check_Login.php',
+				url: 'config/Check_Login.php', // Replace with the correct path to your Check_Login.php file
 				data: formData,
 				dataType: 'json',
 				success: function(response) {
